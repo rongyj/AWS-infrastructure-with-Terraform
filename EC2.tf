@@ -13,12 +13,11 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_instance" "db" {
-  ami                         = var.ami
-  instance_type               = "t2.micro"
-  key_name                    = var.key_name
-  subnet_id                   = aws_subnet.private_subnet.id
-  vpc_security_group_ids      = [aws_security_group.sgdb.id]
-  associate_public_ip_address = true
+  ami                    = var.ami
+  instance_type          = "t2.micro"
+  key_name               = var.key_name
+  subnet_id              = aws_subnet.private_subnet.id
+  vpc_security_group_ids = [aws_security_group.sgdb.id]
 
   tags = {
     Name = "private instance for db"
